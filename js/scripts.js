@@ -1,14 +1,32 @@
-let pokemonList = [
-  {name: 'Bulbasaur', height: 7, types: ['grass', 'poison']},
-  {name: 'Zubat', height: 8, types: ['poison', 'flying']},
-  {name: 'Beedrill', height: 10, types: ['bug', 'poison']},
-];
-for (let i=0; i < pokemonList.length; i++){
-  if (pokemonList[i].height <=7){
-    document.write(pokemonList[i].name + " - Height: 7" + "<br>") 
-  }else if (pokemonList[i].height >7 && pokemonList[i].height<9){
-    document.write(pokemonList[i].name + " - Height: 8" + "<br>")
-  }else {
-    document.write(pokemonList[i].name + " - Height: 10" + " (Wow, that's big!)" + "<br>")
+let pokemonRepository = (function () {
+  let pokemonList = [];
+
+  function add(Pikachu) {
+    pokemonList.push(Pikachu);
   }
-}
+  
+  function getAll() {
+    return pokemonList;
+  }
+  
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
+
+let pokemonList = [
+  {name: 'Bulbasaur', height: 7, types: [' grass', ' poison. ']},
+  {name: 'Zubat', height: 8, types: [' poison', ' flying. ']},
+  {name: 'Beedrill', height: 10, types: [' bug', ' poison. ']},
+];
+
+pokemonList.forEach(function(pokemon) {
+  document.write(pokemon.name + ' is ' + pokemon.height + ' units tall and has the following types: ' + pokemon.types + '<br>');
+});
+
+console.log(pokemonRepository.getAll()); 
+pokemonRepository.add({ name: 'Pikachu' });
+console.log(pokemonRepository.getAll()); 
+
+
