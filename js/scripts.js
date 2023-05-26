@@ -1,8 +1,12 @@
 let pokemonRepository = (function () {
-  let pokemonList = [];
+  let pokemonList = [  
+  {name: 'Bulbasaur', height: 7, types: [' grass', ' poison. ']},
+  {name: 'Zubat', height: 8, types: [' poison', ' flying. ']},
+  {name: 'Beedrill', height: 10, types: [' bug', ' poison. ']},
+];
 
-  function add(Pikachu) {
-    pokemonList.push(Pikachu);
+  function add(pokemon) {
+    pokemonList.push(pokemon);
   }
   
   function getAll() {
@@ -13,20 +17,12 @@ let pokemonRepository = (function () {
     add: add,
     getAll: getAll
   };
-})();
+}) ();
 
-let pokemonList = [
-  {name: 'Bulbasaur', height: 7, types: [' grass', ' poison. ']},
-  {name: 'Zubat', height: 8, types: [' poison', ' flying. ']},
-  {name: 'Beedrill', height: 10, types: [' bug', ' poison. ']},
-];
-
-pokemonList.forEach(function(pokemon) {
+function listPokemon(pokemon) {
   document.write(pokemon.name + ' is ' + pokemon.height + ' units tall and has the following types: ' + pokemon.types + '<br>');
-});
+};
 
-console.log(pokemonRepository.getAll()); 
-pokemonRepository.add({ name: 'Pikachu' });
-console.log(pokemonRepository.getAll()); 
+pokemonRepository.getAll().forEach(listPokemon);
 
 
